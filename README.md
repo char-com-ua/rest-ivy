@@ -45,3 +45,8 @@ Parameters:
 | type | comma separated list of artifact types to accept in the path, * for all |
 | settings | the ivy settings filename suffix. The file named `ivysettings-${settings}.xml` must be located in the root of your tomcat|
 
+*returns http codes*
+
+* `200` content of the module found plus header `x-file-name` with file name from repository.
+* `500` any error occured including not found. content contains error message in text format.
+* `400` no input parameters. help displayed in text format.
