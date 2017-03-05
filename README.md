@@ -11,6 +11,7 @@ Full groovy library set includes ant and ivy - so that,s all what we need.
 
 #### /retrieve
 This request corresponds to [inline ivy retrieve task](http://ant.apache.org/ivy/history/2.1.0/use/retrieve.html).
+
 Parameters:
 
 | name | description |
@@ -19,5 +20,5 @@ Parameters:
 | name | the name of the module to retrieve.  |
 | rev  | the revision constraint of the module to retrieve. |
 | type | comma separated list of artifact types to accept in the path, * for all |
-| settings | the ivy settings filename suffix. file named `ivysettings-${settings}.xml` must be located in the root of your tomcat|
+| settings | the ivy settings filename suffix. The file named `ivysettings-${settings}.xml` must be located in the root of your tomcat|
 
