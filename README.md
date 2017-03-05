@@ -23,8 +23,8 @@ to build just run:
 
 to run:
 * start tomcat
-* put rest-ivy.war into webapps directory
-* configure ivysettings-*.xml files in the tomcat root directory (see configurationsection)
+* put `rest-ivy.war` into `tomcat/webapps` directory
+* configure `ivysettings-*.xml` files in the tomcat root directory (see configuration section)
 
 ### configuration
 TODO... describe tweaks about ivysettings.xml config about cache to avoid dublicating of your repository
