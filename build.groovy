@@ -11,7 +11,7 @@ try {
 	
 	ant.delete( file:warFile )
 	ant.war(destfile:warFile){
-		fileset ( dir:"src/main/resources" )
+		fileset ( dir:"web-root" )
 		lib ( dir:groovyLib )
 	}
 	
