@@ -25,11 +25,12 @@ public class Repo{
 			inline:       true, 
 			keep:         true,
 			organisation: cfg.org,
-			module:       cfg.name,
+			module:       cfg.mod,
 			revision:     fixRev(cfg.rev),
 			type:         cfg.type,
+			conf:         cfg.conf ?: '*' ,
 			transitive:   false,
-			pathId:    pathId,
+			pathId:       pathId,
 			settingsRef:  "ivy-settings${settingSfx(settings)}",
 		)
 		return ant.antProject.references[pathId].collect{ it }

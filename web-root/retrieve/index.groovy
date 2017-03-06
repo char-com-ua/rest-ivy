@@ -25,22 +25,24 @@ try {
 		help()
 	}
 }catch(Throwable e){
-	response.setContentType("text/plain")
 	response.setStatus(500,"ERROR: $e")
+	response.setContentType("text/plain")
 	println "ERROR: $e"
 	e.printStackTrace(out)
 }
 
 def help(){
 	response.setStatus(400)
+	response.setContentType("text/plain")
 	println """
 	retrieve one artefact from the repository
 	valid parameters:
 		org        organisation
-		name       module name
+		mod        module name
 		rev        version/revision
 		type       comma separated list of artifact types to accept in the path, * for all. [jar|zip|...]
-		settings   the ivy settings ref name 
+		conf       (optional) the configuration of the published artifact 
+		settings   (optional) the ivy settings ref name 
 				   the file "./ivysettings-\${settings}.xml" must exist
 	"""
 }  
