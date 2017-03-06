@@ -16,7 +16,8 @@ public class Repo{
 		return ivy
 	}
 
-	public static Object resolve(Map cfg=[:]){
+	//returns List of org.apache.tools.ant.types.resources.FileResource if config fully local
+	public static List resolve(Map cfg=[:]){
 		AntBuilder ant = new AntBuilder()
 		String settings = (String)cfg.remove("settings")
 		def ivy = ivy(ant, settings)
@@ -33,6 +34,8 @@ public class Repo{
 			pathId:       pathId,
 			settingsRef:  "ivy-settings${settingSfx(settings)}",
 		)
-		return ant.antProject.references[pathId].collect{ it }
+		def res = ant.antProject.references[pathId].collect{ it }
+		if(cfg.regex){ res = res.findAll{ it.getName() =~ cfg.regex } }
+		return res
 	}
 }

@@ -42,6 +42,7 @@ def help(){
 		rev        version/revision
 		type       comma separated list of artifact types to accept in the path, * for all. [jar|zip|...]
 		conf       (optional) the configuration of the published artifact 
+		regex      (optional) the regular expression to filter resolved file names
 		settings   (optional) the ivy settings ref name 
 				   the file "./ivysettings-\${settings}.xml" must exist
 	"""

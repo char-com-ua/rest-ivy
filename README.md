@@ -45,8 +45,9 @@ Parameters:
 | mod      | the name of the module to retrieve.  |
 | rev      | the revision constraint of the module to retrieve. |
 | type     | comma separated list of artifact types to accept in the path, * for all |
-| conf     | the configuretion |
-| settings | the ivy settings filename suffix. The file named `ivysettings-${settings}.xml` must be located in the root of your tomcat. if parameter not used the file name `ivysettings.xml` used to load ivy config.|
+| conf     | (optional) the configuretion |
+| regex    | (optional) the regular expression to filter resolved file names |
+| settings | (optional) the ivy settings filename suffix. The file named `ivysettings-${settings}.xml` must be located in the root of your tomcat. if parameter not used the file name `ivysettings.xml` used to load ivy config.|
 
 *returns http codes*
 
