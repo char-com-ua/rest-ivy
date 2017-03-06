@@ -27,7 +27,23 @@ to run:
 * configure `ivysettings-*.xml` files in the tomcat root directory (see configuration section)
 
 ### configuration
-TODO... describe tweaks about ivysettings.xml config about cache to avoid dublicating of your repository
+Check ivysettings-sample/ in the source code. Those settings works for me.
+
+To support multithreading the property `ivy.cache.default.root` reffers to `tomcat/temp/.ivy2-${threadId}`
+
+The attribute ` useOrigin="true" ` forces ivy to avoid copy artifacts to local cache
+
+```xml
+<ivysettings>
+    ...
+    <caches 
+        useOrigin="true" 
+        ivyPattern="${ivy.shared.default.ivy.pattern}" 
+        artifactPattern="${ivy.shared.default.artifact.pattern}"
+        defaultCacheDir="${ivy.cache.default.root}"
+    />
+</ivysettings>
+```
 
 
 ### API
