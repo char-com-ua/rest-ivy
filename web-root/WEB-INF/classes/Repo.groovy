@@ -23,16 +23,19 @@ public class Repo{
 		def ivy = ivy(ant, settings)
 		def pathId = "P_IVY_PATH"
 		ivy.cachepath(
-			inline:       true, 
-			keep:         true,
-			organisation: cfg.org,
-			module:       cfg.mod,
-			revision:     fixRev(cfg.rev),
-			type:         cfg.type,
-			conf:         cfg.conf ?: '*' ,
-			transitive:   false,
-			pathId:       pathId,
-			settingsRef:  "ivy-settings${settingSfx(settings)}",
+			[
+				inline:       true, 
+				keep:         true,
+				organisation: cfg.org,
+				module:       cfg.mod,
+				revision:     fixRev(cfg.rev),
+				type:         cfg.type,
+				conf:         cfg.conf,
+				transitive:   false,
+				pathId:       pathId,
+				settingsRef:  "ivy-settings${settingSfx(settings)}",
+				//resolveMode:  cfg.resolve,
+			].findAll{it.value!=null} //keep only keys with non-null values
 		)
 		def res = ant.antProject.references[pathId].collect{ it }
 		if(cfg.regex){ res = res.findAll{ it.getName() =~ cfg.regex } }
