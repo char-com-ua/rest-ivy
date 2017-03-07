@@ -8,6 +8,10 @@
 	<h3>operations:</h3>
 	<table border="1" cellspacing="0" cellpadding="3">
 		<tr>
+			<td><a href="revisions">revisions</a></td>
+			<td>prints out the list of revisions/versions of the organization & module</td>
+		</tr>
+		<tr>
 			<td><a href="resolve">resolve</a></td>
 			<td>This request similar to `retrieve`, except  it returns resolved artifact names in text format instead of returning the content.</td>
 		</tr>
