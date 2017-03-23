@@ -33,6 +33,8 @@ def help(){
 		mod        module name
 		format     (optional) how to format list: `json` to return as json array, otherwise text
 		settings   (optional) the ivy settings ref name 
+		settings   (optional) the ivy settings ref name 
+		resolver   (optional) the ivy resolver name to use. by default uses settings parameter, if settings not set - uses all resolvers. 
 				   the file "./ivysettings-\${settings}.xml" must exist
 	"""
 }  

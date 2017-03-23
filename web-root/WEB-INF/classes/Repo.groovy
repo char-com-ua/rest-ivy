@@ -50,6 +50,7 @@ public class Repo{
 				revision:     '*',
 				property:     "${keyPrefix}.[revision]",
 				value:        "found",
+				resolver:     cfg.resolver?:cfg.settings,
 				//resolveMode:  parms.resolve,
 			].findAll{it.value!=null} //keep only keys with non-null values
 		)
