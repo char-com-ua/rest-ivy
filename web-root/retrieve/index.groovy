@@ -1,6 +1,4 @@
-//import java.nio.file.Files
-//import java.nio.file.Paths
-
+/**/
 try {
 	def parms = request.getParameterMap().collectEntries{k,v-> [k,v[0]]}
 	if(parms) {
@@ -16,6 +14,7 @@ try {
 		response.setHeader("Content-Disposition", "attachment; filename=\"" + paths[0].getName() + "\"");
 		response.setHeader("x-file-name", paths[0].getName());
 		response.setHeader("x-last-modified", new java.sql.Timestamp( paths[0].getLastModified() ).toString());
+		response.setHeader("Last-Modified", Dates.httpFormat( paths[0].getLastModified() ) );
 		//write content into output stream
 		def stream = response.getOutputStream()
 		stream << paths[0].getInputStream()

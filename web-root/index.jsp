@@ -8,6 +8,10 @@
 	<h3>operations:</h3>
 	<table border="1" cellspacing="0" cellpadding="3">
 		<tr>
+			<td><a href="repo">repo</a></td>
+			<td>repo browser</td>
+		</tr>
+		<tr>
 			<td><a href="revisions">revisions</a></td>
 			<td>prints out the list of revisions/versions of the organization & module</td>
 		</tr>

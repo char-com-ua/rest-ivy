@@ -32,6 +32,35 @@
 		<servlet-name>groovy</servlet-name>
 		<servlet-class>groovy.servlet.GroovyServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>repo</servlet-name>
+		<servlet-class>groovy.servlet.GroovyServlet</servlet-class>
+		<init-param>
+			<param-name>logGROOVY861</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>verbose</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>resource.name.regex</param-name>
+			<param-value>/repo(.*)</param-value>
+		</init-param>
+		<init-param>
+			<param-name>resource.name.replacement</param-name>
+			<param-value>repo/index.groovy</param-value>
+		</init-param>
+		<init-param>
+			<param-name>resource.name.replace.all</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>repo</servlet-name>
+		<url-pattern>/repo/*</url-pattern>
+	</servlet-mapping>
 
 	<servlet-mapping>
 		<servlet-name>template</servlet-name>
@@ -47,7 +76,7 @@
 		<servlet-name>groovy</servlet-name>
 		<url-pattern>*.groovy</url-pattern>
 	</servlet-mapping>
-
+	
 	<!--servlet-mapping>
 		<servlet-name>template</servlet-name>
 		<url-pattern>*.html</url-pattern>
