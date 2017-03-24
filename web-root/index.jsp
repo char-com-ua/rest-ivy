@@ -12,7 +12,7 @@
 			<td>repository browser</td>
 		</tr>
 		<tr>
-			<td><a href="revisions/">revisions/</a></td>
+			<td><a href="revisions/">revisions</a></td>
 			<td>prints out the list of revisions/versions of the organization & module</td>
 		</tr>
 		<tr>
