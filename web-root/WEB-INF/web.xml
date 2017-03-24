@@ -33,23 +33,23 @@
 		<servlet-class>groovy.servlet.GroovyServlet</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>repo</servlet-name>
+		<servlet-name>repository</servlet-name>
 		<servlet-class>groovy.servlet.GroovyServlet</servlet-class>
-		<init-param>
+		<!--init-param>
 			<param-name>logGROOVY861</param-name>
 			<param-value>true</param-value>
 		</init-param>
 		<init-param>
 			<param-name>verbose</param-name>
 			<param-value>true</param-value>
-		</init-param>
+		</init-param-->
 		<init-param>
 			<param-name>resource.name.regex</param-name>
-			<param-value>/repo(.*)</param-value>
+			<param-value>/repository(.*)</param-value>
 		</init-param>
 		<init-param>
 			<param-name>resource.name.replacement</param-name>
-			<param-value>repo/index.groovy</param-value>
+			<param-value>repository/index.groovy</param-value>
 		</init-param>
 		<init-param>
 			<param-name>resource.name.replace.all</param-name>
@@ -58,8 +58,8 @@
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>repo</servlet-name>
-		<url-pattern>/repo/*</url-pattern>
+		<servlet-name>repository</servlet-name>
+		<url-pattern>/repository/*</url-pattern>
 	</servlet-mapping>
 
 	<servlet-mapping>

@@ -2,8 +2,8 @@
 
 try {
 	def parms = request.getParameterMap().collectEntries{k,v-> [k,v[0]]}
-	assert Props.require("repo.root")
-	File repoRoot = new File( Props."repo.root" )
+	assert Props.require("repository.root")
+	File repoRoot = new File( Props."repository.root" )
 	def path = request.getPathInfo()
 	
 	if(path){
@@ -64,7 +64,7 @@ try {
 		}
 	}else{
 		response.setStatus(response.SC_MOVED_TEMPORARILY);
-		response.setHeader("Location", "./repo/");
+		response.setHeader("Location", "./repository/");
 	}
 }catch(Throwable e){
 	response.setStatus(500,"ERROR: $e")
