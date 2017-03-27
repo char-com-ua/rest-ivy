@@ -48,28 +48,19 @@ The attribute ` useOrigin="true" ` forces ivy to avoid copy artifacts to local c
 
 ### API
 
+detailed description you can find inside.
+
 #### /retrieve
 This request corresponds to [inline ivy retrieve task](http://ant.apache.org/ivy/history/2.1.0/use/retrieve.html).
-
 Resolves and returns content of only one artifact.
-
-Parameters:
-
-| name     | description |
-|----------|-------------|
-| org      | the organisation of the module to retrieve. |
-| mod      | the name of the module to retrieve.  |
-| rev      | the revision constraint of the module to retrieve. |
-| type     | comma separated list of artifact types to accept in the path, * for all |
-| conf     | (optional) the configuretion |
-| regex    | (optional) the regular expression to filter resolved file names |
-| settings | (optional) the ivy settings filename suffix. The file named `ivysettings-${settings}.xml` must be located in the root of your tomcat. if parameter not used the file name `ivysettings.xml` used to load ivy config.|
-
-*returns http codes*
-
-* `200` content of the module found plus header `x-file-name` with file name from repository.
-* `500` any error occured including not found. content contains error message in text format.
-* `400` no input parameters. help displayed in text format.
 
 #### /resolve
 The same as `/retrieve` except it returns the list of resolved artifacts instead of content
+
+#### /revisions
+returns revisions list for organization+module in json or text format
+
+#### /repository
+repository browser that can be used in url resolvers / publishers
+
+
