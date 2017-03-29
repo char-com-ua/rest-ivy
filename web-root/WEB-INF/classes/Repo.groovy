@@ -53,10 +53,10 @@ public class Repo{
 			[
 				organisation: cfg.org,
 				module:       cfg.mod,
-				revision:     '*',
+				revision:     cfg.rev ?: '*',
 				property:     "${keyPrefix}.[revision]",
 				value:        "found",
-				resolver:     cfg.resolver?:cfg.settings,
+				resolver:     cfg.resolver ?: cfg.settings,
 				//resolveMode:  parms.resolve,
 			].findAll{it.value!=null} //keep only keys with non-null values
 		)

@@ -31,10 +31,10 @@ def help(){
 	returns verions of the module:
 		org        organisation
 		mod        module name
+		rev        (optional) the pattern matching the revision to list. default: '*'. fot more information see `ivy listmodules` task.
 		format     (optional) how to format list: `json` to return as json array, otherwise text
 		settings   (optional) the ivy settings ref name 
-		settings   (optional) the ivy settings ref name 
-		resolver   (optional) the ivy resolver name to use. by default uses settings parameter, if settings not set - uses all resolvers. 
+		resolver   (optional) the ivy resolver name to use. by default equals to settings parameter, if settings not set - uses all resolvers. 
 				   the file "./ivysettings-\${settings}.xml" must exist
 	"""
 }  
