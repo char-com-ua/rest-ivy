@@ -10,7 +10,8 @@ try {
 	if(path){
 		File repoPath = new File(repoRoot, path)
 		if( method=='PUT' ){
-			if(repoPath.exists())throw new IOException("File ${path} exists. Override not allowed.")
+			//headers sample: [user-agent:Apache Ivy/2.3.0, content-type:application/octet-stream, host:172.30.77.229:8080, accept:text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2, connection:keep-alive, content-length:5050768]
+			//if(repoPath.exists())throw new IOException("File ${path} exists. Override not allowed.")
 			repoPath.getParentFile().mkdirs() 
 			if(!repoPath.getParentFile().exists())throw new IOException("Can't create dir: ${repoPath.getParentFile()}")
 			InputStream istream = request.getInputStream()
@@ -86,5 +87,6 @@ try {
 	response.setContentType("text/plain")
 	println "ERROR: $e"
 	org.codehaus.groovy.runtime.StackTraceUtils.deepSanitize(e).printStackTrace(out)
+	application.log("$e", e)
 }
 
