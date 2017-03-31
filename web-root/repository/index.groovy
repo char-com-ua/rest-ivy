@@ -15,7 +15,7 @@ try {
 			repoPath.getParentFile().mkdirs() 
 			if(!repoPath.getParentFile().exists())throw new IOException("Can't create dir: ${repoPath.getParentFile()}")
 			InputStream istream = request.getInputStream()
-			repoPath.withOutputStream{ it << istream }
+			repoPath.withOutputStream{ IOUtils.copy(istream,it,8192) }
 			istream.close()
 			response.setStatus(201,"File created")
 		}else{
@@ -67,7 +67,7 @@ try {
 					if(method=='GET'){
 						//write content into output stream
 						def stream = response.getOutputStream()
-						repoPath.withInputStream{ stream << it }
+						repoPath.withInputStream{ IOUtils.copy(it,stream,8192) }
 						stream.flush()
 						stream.close()
 					}
