@@ -16,7 +16,7 @@ public class Repo{
 
 	public static NamespaceBuilderSupport ivy(AntBuilder ant, String settings){
 		ant.taskdef(resource: 'org/apache/ivy/ant/antlib.xml', uri: 'ivy')
-		ant.property(name:"ivy.cache.default.root",new File("./temp/.ivy2-${Thread.currentThread().getId()}").getAbsolutePath())
+		ant.property(name:"ivy.cache.default.root",threadDir())
 		NamespaceBuilderSupport ivy = NamespaceBuilder.newInstance(ant, 'ivy', 'org.apache.ivy.ant')
 		ivy.settings(file: "./ivysettings${settingSfx(settings)}.xml")
 		return ivy
@@ -44,6 +44,39 @@ public class Repo{
 		if(cfg.regex){ res = res.findAll{ it.getName() =~ cfg.regex } }
 		return res
 	}
+	
+	public static File threadDir(){
+		def f = new File("./temp/.ivy2-${Thread.currentThread().getId()}").getAbsoluteFile()
+		f.mkdirs()
+		return f
+	}
+	public static File threadFile(String name){
+		def f = new File(threadDir() , name)
+		return f
+	}
+	
+	//ivy info operation
+	//returns [config:[resilvedFiles]]
+	public static Map<String,List<File>> info(Map cfg){
+		AntBuilder ant = ant(cfg)
+		//regexp for config names to resolve (default all)
+		String confMask = (String)cfg.conf ?: ".*"
+		def ivy = ivy(ant, cfg.settings)
+		def res=[:]
+		def ivyFile = cfg.ivyFile
+		assert ivyFile && ivyFile.exists() && ivyFile.length()
+		ivy.info(file:ivyFile)
+		ant.antProject.properties['ivy.configurations'].split(',').each { conf ->
+			conf=conf.trim()
+			if( conf && conf.matches(confMask) ){
+				String pathId = "${conf}_libPath"
+				ivy.cachepath(file:ivyFile, pathid:pathId, type:'*', conf:conf, transitive:'false')
+				res[conf] = ant.antProject.references[pathId].collect{ it }
+			}
+		}
+		return res
+	}
+	
 	
 	public static List<String> revisions(Map cfg){
 		AntBuilder ant = ant(cfg)

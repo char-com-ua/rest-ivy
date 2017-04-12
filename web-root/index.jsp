@@ -24,6 +24,10 @@
 			<td>This request corresponds to 
 				<a href="http://ant.apache.org/ivy/history/2.1.0/use/retrieve.html">inline ivy retrieve task</a>.</td>
 		</tr>
+		<tr>
+			<td><a href="retrieve-all/">retrieve-all</a></td>
+			<td>retrieves all artifacts defined with POST-ed ivy.xml and returns them as zip archive</td>
+		</tr>
 	</table>
 </body>
 
