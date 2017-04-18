@@ -3,11 +3,13 @@
 import java.util.zip.ZipEntry
 import java.util.zip.ZipOutputStream
 try {
-	if(request.method=="POST"){
-		def parms = request.getParameterMap().collectEntries{k,v-> [k,v[0]]}
-		
+	if(request.method=="PUT"){
 		def ivyFile = Repo.threadFile(".tmp.ivy.xml")
-		ivyFile.setText(ivy,"UTF-8")
+		InputStream istream = request.getInputStream()
+		ivyFile.withOutputStream{ IOUtils.copy(istream, it, 4096) }
+		istream.close()
+		
+		def parms = request.getParameterMap().collectEntries{k,v-> [k,v[0]]}
 		def res = Repo.info(parms + [ivyFile:ivyFile])
 		
 		assert res : "no resolved elements"
@@ -43,7 +45,7 @@ def help(){
 	response.setStatus(400)
 	response.setContentType("text/plain")
 	println """
-	retrieves a set of artifacts according to POST-ed ivy.xml file
+	retrieves a set of artifacts according to PUT-ed ivy.xml file
 	returns all as a zip file where each resolved artifact placed into directory named as config in ivy.xml
 		parameters:
 		settings   (optional) the ivy settings ref name 

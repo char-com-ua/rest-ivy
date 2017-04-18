@@ -26,7 +26,7 @@
 		</tr>
 		<tr>
 			<td><a href="retrieve-all/">retrieve-all</a></td>
-			<td>retrieves all artifacts defined with POST-ed ivy.xml and returns them as zip archive</td>
+			<td>retrieves all artifacts defined with PUT-ed ivy.xml and returns them as zip archive</td>
 		</tr>
 	</table>
 </body>
