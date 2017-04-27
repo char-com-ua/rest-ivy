@@ -3,6 +3,7 @@
 import java.util.zip.ZipEntry
 import java.util.zip.ZipOutputStream
 try {
+	FilteredStream.filterStart()
 	if(request.method=="PUT"){
 		def ivyFile = Repo.threadFile(".tmp.ivy.xml")
 		InputStream istream = request.getInputStream()
@@ -36,9 +37,12 @@ try {
 }catch(Throwable e){
 	e.printStackTrace(System.out)
 	response.setStatus(500,"ERROR: $e")
+	println FilteredStream.filterEnd()
 	response.setContentType("text/plain")
 	println "ERROR: $e"
 	e.printStackTrace(out)
+}finally{
+	FilteredStream.filterEnd()
 }
 
 def help(){

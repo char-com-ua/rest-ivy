@@ -2,6 +2,7 @@
 //import java.nio.file.Paths
 
 try {
+	FilteredStream.filterStart()
 	def parms = request.getParameterMap().collectEntries{k,v-> [k,v[0]]}
 	if(parms) {
 		//def wrongParms = parms.keySet() - ['org','name','rev','type','settings']
@@ -20,7 +21,10 @@ try {
 	response.setStatus(500,"ERROR: $e")
 	response.setContentType("text/plain")
 	println "ERROR: $e"
+	println FilteredStream.filterEnd()
 	e.printStackTrace(out)
+}finally{
+	FilteredStream.filterEnd()
 }
 
 def help(){
